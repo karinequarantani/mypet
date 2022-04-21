@@ -23,7 +23,5 @@ public class Vaccines {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
     private String laboratory;
 }
