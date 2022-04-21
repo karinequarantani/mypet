@@ -5,12 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class VaccinesDTO {
 
+    @NotBlank(message = "Vaccine name is required")
     private String name;
     private String laboratory;
 }
