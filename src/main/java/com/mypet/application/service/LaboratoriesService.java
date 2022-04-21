@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -18,5 +20,9 @@ public class LaboratoriesService {
         var laboratories = Laboratories.builder()
                 .name(laboratoriesDTO.getName()).build();
         return laboratoriesRepository.save(laboratories);
+    }
+
+    public List<Laboratories> findAll(){
+        return laboratoriesRepository.findAll();
     }
 }

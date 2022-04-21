@@ -5,12 +5,10 @@ import com.mypet.application.model.dto.LaboratoriesDTO;
 import com.mypet.application.service.LaboratoriesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @Validated
@@ -28,5 +26,10 @@ public class LaboratoriesController {
     @PutMapping
     public Laboratories insert(@Valid @RequestBody LaboratoriesDTO laboratoriesDTO){
         return laboratoriesService.insert(laboratoriesDTO);
+    }
+
+    @GetMapping
+    public List<Laboratories> findAll(){
+        return laboratoriesService.findAll();
     }
 }
