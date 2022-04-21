@@ -4,8 +4,6 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -13,15 +11,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Vaccines {
+public class Vaccines extends BaseEntity {
 
-    @Id
-    private String id;
 
     @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
     private String laboratory;
 }
