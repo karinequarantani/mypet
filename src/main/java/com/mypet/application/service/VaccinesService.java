@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -24,5 +25,9 @@ public class VaccinesService {
                         .laboratory(vaccinesDTO.getLaboratory())
                         .createdAt(LocalDateTime.now()).build();
         return vaccinesRepository.save(vaccines);
+    }
+
+    public List<Vaccines> findAll(){
+        return vaccinesRepository.findAll();
     }
 }

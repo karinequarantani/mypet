@@ -5,12 +5,10 @@ import com.mypet.application.model.dto.VaccinesDTO;
 import com.mypet.application.service.VaccinesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @Validated
@@ -28,5 +26,10 @@ public class VaccinesController {
     @PutMapping
     public Vaccines inserirVacina(@Valid @RequestBody VaccinesDTO vaccines){
         return vaccinesService.insert(vaccines);
+    }
+
+    @GetMapping
+    public List<Vaccines> findAll(){
+        return vaccinesService.findAll();
     }
 }
