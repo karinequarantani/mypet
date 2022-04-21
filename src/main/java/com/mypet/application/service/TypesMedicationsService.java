@@ -7,9 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -19,10 +17,7 @@ public class TypesMedicationsService {
     private final TypesMedicationsRepository typesMedicationsRepository;
     public TypesMedications insert(TypesMedicationsDTO typesMedicationsDTO) {
         var typesMedications = TypesMedications.builder()
-                .id(UUID.randomUUID().toString())
-                .name(typesMedicationsDTO.getName())
-                .createdAt(LocalDateTime.now()).build();
-
+                .name(typesMedicationsDTO.getName()).build();
         return typesMedicationsRepository.save(typesMedications);
     }
 
