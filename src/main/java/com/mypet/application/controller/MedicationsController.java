@@ -2,6 +2,7 @@ package com.mypet.application.controller;
 
 import com.mypet.application.model.Medications;
 import com.mypet.application.model.dto.MedicationsDTO;
+import com.mypet.application.model.dto.MedicationsResponseDTO;
 import com.mypet.application.service.MedicationsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -29,7 +30,7 @@ public class MedicationsController {
     }
 
     @GetMapping
-    public Page<Medications> findAll(Pageable pageable){
+    public Page<MedicationsResponseDTO> findAll(Pageable pageable){
         return medicationsService.findAll(pageable);
     }
 }

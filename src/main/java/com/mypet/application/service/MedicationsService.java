@@ -2,10 +2,12 @@ package com.mypet.application.service;
 
 import com.mypet.application.model.Medications;
 import com.mypet.application.model.dto.MedicationsDTO;
+import com.mypet.application.model.dto.MedicationsResponseDTO;
 import com.mypet.application.repository.MedicationsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,10 @@ public class MedicationsService {
         return medicationsRepository.save(medications);
     }
 
-    public Page<Medications> findAll(Pageable pageable){
-        return medicationsRepository.findAll(pageable);
+    public Page<MedicationsResponseDTO> findAll(Pageable pageable){
+        var medications =  medicationsRepository.findAll(pageable);
+        var medicationsResponseDTOList = medications.getContent().stream().map(MedicationsResponseDTO::new).toList();
+
+        return new PageImpl<>(medicationsResponseDTOList, pageable, medications.getTotalElements());
     }
 }

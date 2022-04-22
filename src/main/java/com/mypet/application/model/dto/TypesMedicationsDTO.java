@@ -1,9 +1,7 @@
 package com.mypet.application.model.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.mypet.application.model.TypesMedications;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 
@@ -11,8 +9,13 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class TypesMedicationsDTO {
 
     @NotBlank(message = "Types medications name is required")
     private String name;
+
+    public TypesMedicationsDTO(TypesMedications typesMedications){
+        this.name = typesMedications.getName();
+    }
 }
