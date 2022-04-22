@@ -39,6 +39,10 @@ public class SurgeriesService {
         return surgeriesRepository.save(surgery);
     }
 
+    public void delete(String surgeryId){
+        surgeriesRepository.deleteById(surgeryId);
+    }
+
     public String[] getNullFields(SurgeriesUpdateDTO surgeriesUpdateDTO){
         List<String> ignoreFields = new ArrayList<>();
         if (surgeriesUpdateDTO.getName() == null){

@@ -37,4 +37,9 @@ public class SurgeriesController {
     public Surgeries update(@RequestBody SurgeriesUpdateDTO surgeriesUpdateDTO, @PathVariable String surgeryId){
         return surgeriesService.update(surgeriesUpdateDTO, surgeryId);
     }
+
+    @DeleteMapping("/{surgeryId}")
+    public void delete(@PathVariable String surgeryId){
+        surgeriesService.delete(surgeryId);
+    }
 }
