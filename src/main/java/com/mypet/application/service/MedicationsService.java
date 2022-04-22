@@ -18,7 +18,8 @@ public class MedicationsService {
 
     public Medications insert(MedicationsDTO medicationsDTO){
         var medications = Medications.builder()
-                .name(medicationsDTO.getName()).build();
+                .name(medicationsDTO.getName())
+                .typesMedications(medicationsDTO.getTypesMedications()).build();
         return medicationsRepository.save(medications);
     }
 
