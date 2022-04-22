@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
@@ -16,5 +17,7 @@ public class Vaccines extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
-    private String laboratory;
+
+    @ManyToOne
+    private Laboratories laboratory;
 }

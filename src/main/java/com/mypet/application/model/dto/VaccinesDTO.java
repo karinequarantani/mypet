@@ -1,5 +1,6 @@
 package com.mypet.application.model.dto;
 
+import com.mypet.application.model.Laboratories;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,6 @@ public class VaccinesDTO {
 
     @NotBlank(message = "Vaccine name is required")
     private String name;
-    private String laboratory;
+
+    private Laboratories laboratory;
 }
