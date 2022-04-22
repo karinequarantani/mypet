@@ -5,6 +5,8 @@ import com.mypet.application.model.dto.MedicationsDTO;
 import com.mypet.application.repository.MedicationsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -18,5 +20,9 @@ public class MedicationsService {
         var medications = Medications.builder()
                 .name(medicationsDTO.getName()).build();
         return medicationsRepository.save(medications);
+    }
+
+    public Page<Medications> findAll(Pageable pageable){
+        return medicationsRepository.findAll(pageable);
     }
 }
