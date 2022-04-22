@@ -2,6 +2,7 @@ package com.mypet.application.controller;
 
 import com.mypet.application.model.Surgeries;
 import com.mypet.application.model.dto.SurgeriesDTO;
+import com.mypet.application.model.dto.SurgeriesUpdateDTO;
 import com.mypet.application.service.SurgeriesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -30,5 +31,10 @@ public class SurgeriesController {
     @GetMapping
     public List<Surgeries> findAll(){
         return surgeriesService.findAll();
+    }
+
+    @PatchMapping("/{surgeryId}")
+    public Surgeries update(@RequestBody SurgeriesUpdateDTO surgeriesUpdateDTO, @PathVariable String surgeryId){
+        return surgeriesService.update(surgeriesUpdateDTO, surgeryId);
     }
 }
