@@ -7,6 +7,8 @@ import com.mypet.application.service.MedicationsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +27,8 @@ public class MedicationsController {
     }
 
     @PutMapping
-    public Medications insert(@Valid @RequestBody MedicationsDTO medicationsDTO){
-        return medicationsService.insert(medicationsDTO);
+    public ResponseEntity<Medications> insert(@Valid @RequestBody MedicationsDTO medicationsDTO){
+        return ResponseEntity.status(HttpStatus.CREATED).body(medicationsService.insert(medicationsDTO));
     }
 
     @GetMapping

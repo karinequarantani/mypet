@@ -4,6 +4,8 @@ import com.mypet.application.model.TypesMedications;
 import com.mypet.application.model.dto.TypesMedicationsDTO;
 import com.mypet.application.service.TypesMedicationsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +25,8 @@ public class TypesMedicationsController {
     }
 
     @PutMapping
-    public TypesMedications insert(@Valid @RequestBody TypesMedicationsDTO typesMedicationsDTO) {
-        return typesMedicationsService.insert(typesMedicationsDTO);
+    public ResponseEntity<TypesMedications> insert(@Valid @RequestBody TypesMedicationsDTO typesMedicationsDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(typesMedicationsService.insert(typesMedicationsDTO));
     }
 
     @GetMapping

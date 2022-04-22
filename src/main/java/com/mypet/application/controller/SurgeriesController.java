@@ -5,6 +5,8 @@ import com.mypet.application.model.dto.SurgeriesDTO;
 import com.mypet.application.model.dto.SurgeriesUpdateDTO;
 import com.mypet.application.service.SurgeriesService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +26,8 @@ public class SurgeriesController {
     }
 
     @PutMapping
-    public Surgeries insert(@Valid @RequestBody SurgeriesDTO surgeriesDTO){
-        return surgeriesService.insert(surgeriesDTO);
+    public ResponseEntity<Surgeries> insert(@Valid @RequestBody SurgeriesDTO surgeriesDTO){
+        return ResponseEntity.status(HttpStatus.CREATED).body(surgeriesService.insert(surgeriesDTO));
     }
 
     @GetMapping
@@ -39,7 +41,8 @@ public class SurgeriesController {
     }
 
     @DeleteMapping("/{surgeryId}")
-    public void delete(@PathVariable String surgeryId){
+    public ResponseEntity<Void> delete(@PathVariable String surgeryId){
         surgeriesService.delete(surgeryId);
+        return ResponseEntity.noContent().build();
     }
 }

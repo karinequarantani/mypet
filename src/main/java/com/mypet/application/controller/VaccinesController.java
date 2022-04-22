@@ -4,6 +4,8 @@ import com.mypet.application.model.Vaccines;
 import com.mypet.application.model.dto.VaccinesDTO;
 import com.mypet.application.service.VaccinesService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +26,8 @@ public class VaccinesController {
     }
 
     @PutMapping
-    public Vaccines inserirVacina(@Valid @RequestBody VaccinesDTO vaccines){
-        return vaccinesService.insert(vaccines);
+    public ResponseEntity<Vaccines> insert(@Valid @RequestBody VaccinesDTO vaccines){
+        return ResponseEntity.status(HttpStatus.CREATED).body(vaccinesService.insert(vaccines));
     }
 
     @GetMapping
