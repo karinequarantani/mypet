@@ -38,4 +38,10 @@ public class PetController {
     public Pet update(@RequestBody PetDTO petDTO, @PathVariable String petId){
         return petService.update(petDTO, petId);
     }
+
+    @DeleteMapping("/{petId}")
+    public ResponseEntity<Void> delete(@PathVariable String petId){
+        petService.delete(petId);
+        return ResponseEntity.noContent().build();
+    }
 }

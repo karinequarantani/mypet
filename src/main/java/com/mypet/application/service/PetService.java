@@ -40,6 +40,9 @@ public class PetService {
         return petRepository.save(pet);
     }
 
+    public void delete(String petId){
+        petRepository.deleteById(petId);
+    }
 
     public String[] getNullFields(PetDTO petDTO){
         List<String> ignoreFields = new ArrayList<>();
