@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -22,5 +24,9 @@ public class PetService {
                 .birthday(petDTO.getBirthday())
                 .specie(petDTO.getSpecie()).build();
         return petRepository.save(pet);
+    }
+
+    public List<Pet> findAll(){
+        return petRepository.findAll();
     }
 }
