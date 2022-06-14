@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -28,4 +29,6 @@ public class Pet extends BaseEntity{
 
     @Column(nullable = false)
     private String specie;
+
+    private LocalDateTime updatedAt;
 }

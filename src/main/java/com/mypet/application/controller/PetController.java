@@ -33,4 +33,9 @@ public class PetController {
     public List<Pet> findAll(){
         return petService.findAll();
     }
+
+    @PatchMapping("/{petId}")
+    public Pet update(@RequestBody PetDTO petDTO, @PathVariable String petId){
+        return petService.update(petDTO, petId);
+    }
 }
