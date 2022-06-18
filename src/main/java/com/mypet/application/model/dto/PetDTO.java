@@ -1,5 +1,6 @@
 package com.mypet.application.model.dto;
 
+import com.mypet.application.model.Pet;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,4 +30,12 @@ public class PetDTO {
 
     @NotBlank(message = "Pet specie is required")
     private String specie;
+
+    public PetDTO(Pet pet){
+        this.name = pet.getName();
+        this.breed = pet.getBreed();
+        this.gender = pet.getGender();
+        this.birthday = pet.getBirthday();
+        this.specie = pet.getSpecie();
+    }
 }

@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -31,4 +33,13 @@ public class MedicationsService {
 
         return new PageImpl<>(medicationsResponseDTOList, pageable, medications.getTotalElements());
     }
+
+    public Medications findById(String id){
+        var medication = medicationsRepository.findById(id);
+        if(medication.isEmpty()){
+            throw new EntityNotFoundException("Medication not found");
+        }
+        return medication.get();
+    }
+
 }

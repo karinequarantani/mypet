@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,14 @@ public class PetService {
 
     public List<Pet> findAll(){
         return petRepository.findAll();
+    }
+
+    public Pet findById(String id){
+        var pet = petRepository.findById(id);
+        if(pet.isEmpty()){
+            throw new EntityNotFoundException("Pet not found");
+        }
+        return pet.get();
     }
 
     public Pet update(PetDTO petDTO, String petId){
