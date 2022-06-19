@@ -5,6 +5,9 @@ import com.mypet.application.model.dto.PetVaccinesDTO;
 import com.mypet.application.model.dto.PetVaccinesResponseDTO;
 import com.mypet.application.repository.PetVaccinesRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -27,4 +30,9 @@ public class PetVaccinesService {
         return new PetVaccinesResponseDTO(petVaccinesRepository.save(petVaccine));
     }
 
+    public Page<PetVaccinesResponseDTO> findByPetId(String petId, Pageable pageable){
+        var petVaccine = petVaccinesRepository.findAllByPetId(petId, pageable);
+        var petVaccineResponseDTOList = petVaccine.getContent().stream().map(PetVaccinesResponseDTO::new).toList();
+        return new PageImpl<>(petVaccineResponseDTOList, pageable, petVaccine.getTotalElements());
+    }
 }
