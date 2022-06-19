@@ -62,4 +62,8 @@ public class PetVaccinesService {
         }
         return ignoreFields.toArray(String[]::new);
     }
+
+    public void delete(String petVaccineId){
+        petVaccinesRepository.deleteById(petVaccineId);
+    }
 }
