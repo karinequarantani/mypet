@@ -1,8 +1,8 @@
 package com.mypet.application.controller;
 
-import com.mypet.application.model.PetMedications;
 import com.mypet.application.model.dto.PetMedicationsDTO;
 import com.mypet.application.model.dto.PetMedicationsResponseDTO;
+import com.mypet.application.model.dto.PetMedicationsUpdateDTO;
 import com.mypet.application.service.PetMedicationsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -13,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Slf4j
 @Validated
@@ -35,5 +34,10 @@ public class PetMedicationsController {
     @GetMapping("/{petId}")
     public Page<PetMedicationsResponseDTO> findByPetId(@PathVariable String petId, Pageable pageable){
         return petMedicationsService.findByPetId(petId, pageable);
+    }
+
+    @PatchMapping("/{petMedicationId}")
+    public PetMedicationsResponseDTO update(@RequestBody PetMedicationsUpdateDTO petMedicationsDTO, @PathVariable String petMedicationId){
+        return petMedicationsService.update(petMedicationsDTO, petMedicationId);
     }
 }
