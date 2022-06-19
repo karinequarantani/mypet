@@ -31,11 +31,15 @@ public class PetDTO {
     @NotBlank(message = "Pet specie is required")
     private String specie;
 
+    @NotBlank(message = "Tutor id is required")
+    private String tutorId;
+
     public PetDTO(Pet pet){
         this.name = pet.getName();
         this.breed = pet.getBreed();
         this.gender = pet.getGender();
         this.birthday = pet.getBirthday();
         this.specie = pet.getSpecie();
+        this.tutorId = pet.getTutor().getId();
     }
 }

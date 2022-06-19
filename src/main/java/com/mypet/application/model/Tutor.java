@@ -33,6 +33,6 @@ public class Tutor extends BaseEntity {
     private String email;
     private LocalDateTime updatedAt;
 
-    @OneToMany
+    @OneToMany(mappedBy = "tutor")
     private Set<Pet> pet;
 }

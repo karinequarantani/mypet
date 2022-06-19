@@ -19,14 +19,17 @@ import java.util.List;
 public class PetService {
 
     private final PetRepository petRepository;
+    private final TutorService tutorService;
 
     public Pet insert(PetDTO petDTO){
+        var tutor = tutorService.findById(petDTO.getTutorId());
         var pet = Pet.builder()
                 .name(petDTO.getName())
                 .breed(petDTO.getBreed())
                 .gender(petDTO.getGender())
                 .birthday(petDTO.getBirthday())
-                .specie(petDTO.getSpecie()).build();
+                .specie(petDTO.getSpecie())
+                .tutor(tutor).build();
         return petRepository.save(pet);
     }
 

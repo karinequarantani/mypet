@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,5 +63,13 @@ public class TutorService {
             ignoreFields.add("email");
         }
         return ignoreFields.toArray(String[]::new);
+    }
+
+    public Tutor findById(String tutorId){
+        var tutor = tutorRepository.findById(tutorId);
+        if(tutor.isEmpty()){
+            throw new EntityNotFoundException("Tutor not found");
+        }
+        return tutor.get();
     }
 }
