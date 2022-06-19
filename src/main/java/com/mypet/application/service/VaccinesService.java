@@ -1,6 +1,5 @@
 package com.mypet.application.service;
 
-import com.mypet.application.model.Medications;
 import com.mypet.application.model.Vaccines;
 import com.mypet.application.model.dto.VaccinesDTO;
 import com.mypet.application.repository.VaccinesRepository;
@@ -32,7 +31,7 @@ public class VaccinesService {
     public Vaccines findById(String id){
         var vaccine = vaccinesRepository.findById(id);
         if(vaccine.isEmpty()){
-            throw new EntityNotFoundException("Medication not found");
+            throw new EntityNotFoundException("Vaccine not found");
         }
         return vaccine.get();
     }

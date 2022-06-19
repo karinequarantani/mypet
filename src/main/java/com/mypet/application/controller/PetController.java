@@ -4,13 +4,14 @@ import com.mypet.application.model.Pet;
 import com.mypet.application.model.dto.PetDTO;
 import com.mypet.application.service.PetService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Slf4j
 @Validated
@@ -29,9 +30,9 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.CREATED).body(petService.insert(petDTO));
     }
 
-    @GetMapping
-    public List<Pet> findAll(){
-        return petService.findAll();
+    @GetMapping("/{tutorId}")
+    public Page<Pet> findAllByTutorId(@PathVariable String tutorId, Pageable pageable){
+        return petService.findAllByTutorId(tutorId, pageable);
     }
 
     @PatchMapping("/{petId}")
