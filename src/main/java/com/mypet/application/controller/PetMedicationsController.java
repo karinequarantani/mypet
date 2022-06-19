@@ -40,4 +40,10 @@ public class PetMedicationsController {
     public PetMedicationsResponseDTO update(@RequestBody PetMedicationsUpdateDTO petMedicationsDTO, @PathVariable String petMedicationId){
         return petMedicationsService.update(petMedicationsDTO, petMedicationId);
     }
+
+    @DeleteMapping("/{petMedicationId}")
+    public ResponseEntity<Void> delete(@PathVariable String petMedicationId){
+        petMedicationsService.delete(petMedicationId);
+        return ResponseEntity.noContent().build();
+    }
 }

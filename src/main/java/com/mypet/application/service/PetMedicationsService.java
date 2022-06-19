@@ -62,4 +62,8 @@ public class PetMedicationsService {
         }
         return ignoreFields.toArray(String[]::new);
     }
+
+    public void delete(String petMedicationId) {
+        petMedicationsRepository.deleteById(petMedicationId);
+    }
 }
