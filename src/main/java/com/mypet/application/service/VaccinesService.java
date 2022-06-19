@@ -1,5 +1,6 @@
 package com.mypet.application.service;
 
+import com.mypet.application.model.Medications;
 import com.mypet.application.model.Vaccines;
 import com.mypet.application.model.dto.VaccinesDTO;
 import com.mypet.application.repository.VaccinesRepository;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Slf4j
@@ -25,5 +27,13 @@ public class VaccinesService {
 
     public List<Vaccines> findAll(){
         return vaccinesRepository.findAll();
+    }
+
+    public Vaccines findById(String id){
+        var vaccine = vaccinesRepository.findById(id);
+        if(vaccine.isEmpty()){
+            throw new EntityNotFoundException("Medication not found");
+        }
+        return vaccine.get();
     }
 }

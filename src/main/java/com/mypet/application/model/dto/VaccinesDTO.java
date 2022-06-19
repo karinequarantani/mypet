@@ -1,6 +1,7 @@
 package com.mypet.application.model.dto;
 
 import com.mypet.application.model.Laboratories;
+import com.mypet.application.model.Vaccines;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,4 +19,9 @@ public class VaccinesDTO {
     private String name;
 
     private Laboratories laboratory;
+
+    public VaccinesDTO(Vaccines vaccine) {
+        this.name = vaccine.getName();
+        this.laboratory = vaccine.getLaboratory();
+    }
 }
