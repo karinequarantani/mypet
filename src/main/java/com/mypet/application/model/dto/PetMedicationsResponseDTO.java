@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class PetMedicationsResponseDTO {
 
+    private String id;
     private LocalDate applicationDate;
     private LocalDate nextDate;
     private String description;
@@ -22,6 +23,7 @@ public class PetMedicationsResponseDTO {
     private MedicationsResponseDTO medication;
 
     public PetMedicationsResponseDTO(PetMedications petMedications){
+        this.id = petMedications.getId();
         this.applicationDate = petMedications.getApplicationDate();
         this.nextDate = petMedications.getNextDate();
         this.description = petMedications.getDescription();
