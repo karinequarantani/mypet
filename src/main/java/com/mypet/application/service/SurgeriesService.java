@@ -7,6 +7,8 @@ import com.mypet.application.repository.SurgeriesRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,17 +21,20 @@ import java.util.List;
 public class SurgeriesService {
 
     private final SurgeriesRepository surgeriesRepository;
+    private final PetService petService;
 
     public Surgeries insert(SurgeriesDTO surgeriesDTO){
+        var pet = petService.findById(surgeriesDTO.getPetId());
         var surgeries = Surgeries.builder()
                 .name(surgeriesDTO.getName())
                 .date(surgeriesDTO.getDate())
-                .vet(surgeriesDTO.getVet()).build();
+                .vet(surgeriesDTO.getVet())
+                .pet(pet).build();
         return surgeriesRepository.save(surgeries);
     }
 
-    public List<Surgeries> findAll(){
-        return surgeriesRepository.findAll();
+    public Page<Surgeries> findByPetId(String petId, Pageable pageable){
+        return surgeriesRepository.findAllByPetId(petId, pageable);
     }
 
     public Surgeries update(SurgeriesUpdateDTO surgeriesUpdateDTO, String surgeryId){

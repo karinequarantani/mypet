@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -21,4 +22,7 @@ public class Surgeries extends BaseEntity {
     private LocalDate date;
     private String vet;
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    private Pet pet;
 }

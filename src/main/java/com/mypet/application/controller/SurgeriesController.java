@@ -5,13 +5,14 @@ import com.mypet.application.model.dto.SurgeriesDTO;
 import com.mypet.application.model.dto.SurgeriesUpdateDTO;
 import com.mypet.application.service.SurgeriesService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Slf4j
 @Validated
@@ -30,9 +31,9 @@ public class SurgeriesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(surgeriesService.insert(surgeriesDTO));
     }
 
-    @GetMapping
-    public List<Surgeries> findAll(){
-        return surgeriesService.findAll();
+    @GetMapping("/{petId}")
+    public Page<Surgeries> findByPetId(@PathVariable String petId, Pageable pageable){
+        return surgeriesService.findByPetId(petId, pageable);
     }
 
     @PatchMapping("/{surgeryId}")

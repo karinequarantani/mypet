@@ -14,7 +14,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class SurgeriesDTO {
 
-
+    @NotBlank(message = "Pet id is required")
+    private String petId;
     @NotBlank(message = "Surgery name is required")
     private String name;
     private LocalDate date;
