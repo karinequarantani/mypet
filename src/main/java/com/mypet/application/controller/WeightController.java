@@ -29,4 +29,9 @@ public class WeightController {
     public ResponseEntity<Weight> insert(@Valid @RequestBody WeightDTO weightDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(weightService.insert(weightDTO));
     }
+
+    @GetMapping("/{petId}")
+    public Page<Weight> findByPetId(@PathVariable String petId, Pageable pageable){
+        return weightService.findByPetId(petId, pageable);
+    }
 }
