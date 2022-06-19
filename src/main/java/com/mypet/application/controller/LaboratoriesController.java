@@ -15,6 +15,7 @@ import java.util.List;
 @Slf4j
 @Validated
 @RestController
+@CrossOrigin
 @RequestMapping("/laboratories")
 public class LaboratoriesController {
 

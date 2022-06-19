@@ -15,6 +15,7 @@ import java.util.List;
 @Slf4j
 @Validated
 @RestController
+@CrossOrigin
 @RequestMapping("/tutor")
 public class TutorController {
 

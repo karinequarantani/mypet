@@ -16,6 +16,7 @@ import javax.validation.Valid;
 @Slf4j
 @Validated
 @RestController
+@CrossOrigin
 @RequestMapping("/pets")
 public class PetController {
 
