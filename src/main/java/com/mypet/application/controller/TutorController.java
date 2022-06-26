@@ -40,6 +40,11 @@ public class TutorController {
         return tutorService.findAll();
     }
 
+    @GetMapping("/{tutorId}")
+    public Tutor findById(@PathVariable String tutorId){
+        return tutorService.findById(tutorId);
+    }
+
     @DeleteMapping("/{tutorId}")
     public ResponseEntity<Void> delete(@PathVariable String tutorId){
         tutorService.delete(tutorId);
