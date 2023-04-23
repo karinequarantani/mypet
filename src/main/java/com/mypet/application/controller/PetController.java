@@ -26,7 +26,7 @@ public class PetController {
         this.petService = petService;
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<Pet> insert(@Valid @RequestBody PetDTO petDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(petService.insert(petDTO));
     }

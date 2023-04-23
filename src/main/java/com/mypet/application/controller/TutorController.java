@@ -25,7 +25,7 @@ public class TutorController {
         this.tutorService = tutorService;
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<Tutor> insert(@Valid @RequestBody TutorDTO tutorDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(tutorService.insert(tutorDTO));
     }

@@ -27,7 +27,7 @@ public class SurgeriesController {
         this.surgeriesService = surgeriesService;
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<Surgeries> insert(@Valid @RequestBody SurgeriesDTO surgeriesDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(surgeriesService.insert(surgeriesDTO));
     }

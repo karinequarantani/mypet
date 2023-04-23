@@ -26,7 +26,7 @@ public class WeightController {
         this.weightService = weightService;
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<Weight> insert(@Valid @RequestBody WeightDTO weightDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(weightService.insert(weightDTO));
     }
