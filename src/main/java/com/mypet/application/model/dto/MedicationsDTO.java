@@ -16,6 +16,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class MedicationsDTO {
 
+    @NotBlank(message = "Vaccine name is required")
+    private String name;
     @NotBlank(message = "Vaccine description is required")
     private String description;
     @NotNull(message = "Application date is required")

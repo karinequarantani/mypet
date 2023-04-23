@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class MedicationsResponseDTO {
 
     private String id;
+    private String name;
     private String description;
     private LocalDate applicationDate;
     private LocalDate nextDate;
@@ -24,6 +25,7 @@ public class MedicationsResponseDTO {
 
     public MedicationsResponseDTO(Medications medications){
         this.id = medications.getId();
+        this.name = medications.getName();
         this.description = medications.getDescription();
         this.applicationDate = medications.getApplicationDate();
         this.nextDate = medications.getNextDate();

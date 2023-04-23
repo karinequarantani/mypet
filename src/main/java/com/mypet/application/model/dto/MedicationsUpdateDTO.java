@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MedicationsUpdateDTO {
+    private String name;
     private String description;
     private LocalDate applicationDate;
     private LocalDate nextDate;

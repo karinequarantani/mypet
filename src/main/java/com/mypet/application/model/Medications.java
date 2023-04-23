@@ -18,6 +18,8 @@ import java.util.Set;
 public class Medications extends BaseEntity {
 
     @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
     private String description;
     @Column(nullable = false)
     private LocalDate applicationDate;
