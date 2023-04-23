@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,13 +17,16 @@ import java.util.stream.Collectors;
 public class MedicationsResponseDTO {
 
     private String id;
-    private String name;
-
-    private Set<TypesMedicationsDTO> typesMedications;
+    private String description;
+    private LocalDate applicationDate;
+    private LocalDate nextDate;
+    private String petId;
 
     public MedicationsResponseDTO(Medications medications){
         this.id = medications.getId();
-        this.name = medications.getName();
-        this.typesMedications = medications.getTypesMedications().stream().map(TypesMedicationsDTO::new).collect(Collectors.toSet());
+        this.description = medications.getDescription();
+        this.applicationDate = medications.getApplicationDate();
+        this.nextDate = medications.getNextDate();
+        this.petId = medications.getPet().getId();
     }
 }

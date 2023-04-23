@@ -2,6 +2,7 @@ package com.mypet.application.model;
 
 import lombok.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -23,6 +24,6 @@ public class Surgeries extends BaseEntity {
     private String vet;
     private LocalDateTime updatedAt;
 
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.REMOVE)
     private Pet pet;
 }

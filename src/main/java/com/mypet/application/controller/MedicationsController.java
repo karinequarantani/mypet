@@ -3,6 +3,7 @@ package com.mypet.application.controller;
 import com.mypet.application.model.Medications;
 import com.mypet.application.model.dto.MedicationsDTO;
 import com.mypet.application.model.dto.MedicationsResponseDTO;
+import com.mypet.application.model.dto.MedicationsUpdateDTO;
 import com.mypet.application.service.MedicationsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -27,13 +28,25 @@ public class MedicationsController {
         this.medicationsService = medicationsService;
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<Medications> insert(@Valid @RequestBody MedicationsDTO medicationsDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(medicationsService.insert(medicationsDTO));
     }
 
-    @GetMapping
-    public Page<MedicationsResponseDTO> findAll(Pageable pageable){
-        return medicationsService.findAll(pageable);
+    @GetMapping("/{petId}")
+    public Page<MedicationsResponseDTO> findByPetId(@PathVariable String petId, Pageable pageable){
+        return medicationsService.findByPetId(petId, pageable);
     }
+
+    @PatchMapping("/{medicationsId}")
+    public MedicationsResponseDTO update(@RequestBody MedicationsUpdateDTO medicationsUpdateDTO, @PathVariable String medicationsId){
+        return medicationsService.update(medicationsUpdateDTO, medicationsId);
+    }
+
+    @DeleteMapping("/{medicationsId}")
+    public ResponseEntity<Void> delete(@PathVariable String medicationsId){
+        medicationsService.delete(medicationsId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

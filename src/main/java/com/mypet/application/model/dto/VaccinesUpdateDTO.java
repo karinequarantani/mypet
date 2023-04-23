@@ -11,8 +11,8 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PetVaccinesUpdateDTO {
+public class VaccinesUpdateDTO {
+    private String name;
     private LocalDate applicationDate;
     private LocalDate nextDate;
-    private String description;
 }

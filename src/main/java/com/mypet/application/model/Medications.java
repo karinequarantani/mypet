@@ -3,6 +3,8 @@ package com.mypet.application.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -14,12 +16,13 @@ import java.util.Set;
 public class Medications extends BaseEntity {
 
     @Column(nullable = false)
-    private String name;
+    private String description;
+    @Column(nullable = false)
+    private LocalDate applicationDate;
+    private LocalDate nextDate;
+    private LocalDateTime updatedAt;
 
-    @ManyToMany
-    @JoinTable(
-            name = "medications_types_medications",
-            joinColumns = @JoinColumn(name = "medications_id"),
-            inverseJoinColumns = @JoinColumn(name = "type_medications_id"))
-    private Set<TypesMedications> typesMedications;
+    @ManyToOne(cascade= CascadeType.REMOVE)
+    private Pet pet;
+
 }
