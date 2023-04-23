@@ -24,7 +24,7 @@ public class Medications extends BaseEntity {
     private LocalDate nextDate;
     private LocalDateTime updatedAt;
 
-    @ManyToOne(cascade= CascadeType.REMOVE)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Pet pet;
 

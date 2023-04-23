@@ -26,7 +26,7 @@ public class Surgeries extends BaseEntity {
     private String vet;
     private LocalDateTime updatedAt;
 
-    @ManyToOne(cascade= CascadeType.REMOVE)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Pet pet;
 }

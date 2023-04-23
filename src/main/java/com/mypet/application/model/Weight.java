@@ -18,7 +18,7 @@ public class Weight extends BaseEntity{
 
     private Double weight;
 
-    @ManyToOne(cascade= CascadeType.REMOVE)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Pet pet;
 }
