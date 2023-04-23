@@ -27,7 +27,7 @@ public class MedicationsService {
     private final PetService petService;
 
     public Medications insert(MedicationsDTO medicationsDTO){
-        var pet = petService.findById(medicationsDTO.getPet().getId());
+        var pet = petService.findById(medicationsDTO.getPetId());
         var medications = Medications.builder()
                 .description(medicationsDTO.getDescription())
                 .applicationDate(medicationsDTO.getApplicationDate())

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -17,9 +18,9 @@ public class MedicationsDTO {
 
     @NotBlank(message = "Vaccine description is required")
     private String description;
-    @NotBlank(message = "Application date is required")
+    @NotNull(message = "Application date is required")
     private LocalDate applicationDate;
     private LocalDate nextDate;
-    private Pet pet;
+    private String petId;
 
 }
