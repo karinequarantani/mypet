@@ -44,8 +44,8 @@ public class VaccinesController {
     }
 
     @DeleteMapping("/{vaccineId}")
-    public ResponseEntity<Void> delete(@PathVariable String petVaccineId){
-        vaccinesService.delete(petVaccineId);
+    public ResponseEntity<Void> delete(@PathVariable String vaccineId){
+        vaccinesService.delete(vaccineId);
         return ResponseEntity.noContent().build();
     }
 }
