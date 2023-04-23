@@ -19,7 +19,6 @@ public class VaccinesResponseDTO {
     private LocalDate applicationDate;
     private LocalDate nextDate;
     private PetDTO pet;
-    private VaccinesDTO vaccine;
 
     public VaccinesResponseDTO(Vaccines vaccines){
         this.id = vaccines.getId();
