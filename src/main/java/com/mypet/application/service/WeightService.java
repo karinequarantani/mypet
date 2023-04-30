@@ -34,7 +34,7 @@ public class WeightService {
     }
 
     public Page<Weight> findByPetId(String petId, Pageable pageable) {
-        return weightRepository.findAllByPetId(petId, pageable);
+        return weightRepository.findAllByPetIdOrderByDateDesc(petId, pageable);
     }
 
     public WeightResponseDTO update(WeightUpdateDTO weightUpdateDTO, String weightId){

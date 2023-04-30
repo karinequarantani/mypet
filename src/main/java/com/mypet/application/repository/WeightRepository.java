@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WeightRepository extends JpaRepository<Weight, String> {
-    Page<Weight> findAllByPetId(String petId, Pageable pageable);
+    Page<Weight> findAllByPetIdOrderByDateDesc(String petId, Pageable pageable);
 
 }
