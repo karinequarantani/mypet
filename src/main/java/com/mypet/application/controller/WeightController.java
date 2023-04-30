@@ -2,6 +2,8 @@ package com.mypet.application.controller;
 
 import com.mypet.application.model.Weight;
 import com.mypet.application.model.dto.WeightDTO;
+import com.mypet.application.model.dto.WeightResponseDTO;
+import com.mypet.application.model.dto.WeightUpdateDTO;
 import com.mypet.application.service.WeightService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -34,5 +36,16 @@ public class WeightController {
     @GetMapping("/{petId}")
     public Page<Weight> findByPetId(@PathVariable String petId, Pageable pageable){
         return weightService.findByPetId(petId, pageable);
+    }
+
+    @PatchMapping("/{weightId}")
+    public WeightResponseDTO update(@RequestBody WeightUpdateDTO weightUpdateDTO, @PathVariable String weightId){
+        return weightService.update(weightUpdateDTO, weightId);
+    }
+
+    @DeleteMapping("/{weightId}")
+    public ResponseEntity<Void> delete(@PathVariable String weightId){
+        weightService.delete(weightId);
+        return ResponseEntity.noContent().build();
     }
 }
