@@ -31,6 +31,13 @@ public class PetService {
                 .gender(petDTO.getGender())
                 .birthday(petDTO.getBirthday())
                 .specie(petDTO.getSpecie())
+                .rationBrand(petDTO.getRationBrand())
+                .feedName(petDTO.getFeedName())
+                .amount(petDTO.getAmount())
+                .firstFeeding(petDTO.getFirstFeeding())
+                .secondFeeding(petDTO.getSecondFeeding())
+                .firstWalk(petDTO.getFirstWalk())
+                .secondWalk(petDTO.getSecondWalk())
                 .tutor(tutor).build();
         return petRepository.save(pet);
     }
@@ -74,6 +81,27 @@ public class PetService {
         }
         if(petDTO.getSpecie() == null){
             ignoreFields.add("specie");
+        }
+        if(petDTO.getRationBrand() == null){
+            ignoreFields.add("rationBrand");
+        }
+        if(petDTO.getFeedName() == null){
+            ignoreFields.add("feedName");
+        }
+        if(petDTO.getAmount() == null){
+            ignoreFields.add("amount");
+        }
+        if(petDTO.getFirstFeeding() == null){
+            ignoreFields.add("firstFeeding");
+        }
+        if(petDTO.getSecondFeeding() == null){
+            ignoreFields.add("secondFeeding");
+        }
+        if(petDTO.getFirstWalk() == null){
+            ignoreFields.add("firstWalk");
+        }
+        if(petDTO.getSecondWalk() == null){
+            ignoreFields.add("secondWalk");
         }
         return ignoreFields.toArray(String[]::new);
     }

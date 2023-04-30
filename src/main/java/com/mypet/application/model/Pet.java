@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -33,6 +34,13 @@ public class Pet extends BaseEntity{
     private String specie;
 
     private LocalDateTime updatedAt;
+    private String rationBrand;
+    private String feedName;
+    private String amount;
+    private Time firstFeeding;
+    private Time secondFeeding;
+    private Time firstWalk;
+    private Time secondWalk;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne

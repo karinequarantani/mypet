@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.sql.Time;
 import java.time.LocalDate;
 
 @Getter
@@ -31,6 +32,14 @@ public class PetDTO {
     @NotBlank(message = "Pet specie is required")
     private String specie;
 
+    private String rationBrand;
+    private String feedName;
+    private String amount;
+    private Time firstFeeding;
+    private Time secondFeeding;
+    private Time firstWalk;
+    private Time secondWalk;
+
     @NotBlank(message = "Tutor id is required")
     private String tutorId;
 
@@ -40,6 +49,13 @@ public class PetDTO {
         this.gender = pet.getGender();
         this.birthday = pet.getBirthday();
         this.specie = pet.getSpecie();
+        this.rationBrand = pet.getRationBrand();
+        this.feedName = pet.getFeedName();
+        this.amount = pet.getAmount();
+        this.firstFeeding = pet.getFirstFeeding();
+        this.secondFeeding = pet.getSecondFeeding();
+        this.firstWalk = pet.getFirstWalk();
+        this.secondWalk = pet.getSecondWalk();
         this.tutorId = pet.getTutor().getId();
     }
 }
