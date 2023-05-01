@@ -43,7 +43,7 @@ public class PetService {
     }
 
     public Page<Pet> findAllByTutorId(String tutorId, Pageable pageable){
-        return petRepository.findAllByTutorId(tutorId, pageable);
+        return petRepository.findAllByTutorIdOrderByName(tutorId, pageable);
     }
 
     public Pet findById(String id){
@@ -81,27 +81,6 @@ public class PetService {
         }
         if(petDTO.getSpecie() == null){
             ignoreFields.add("specie");
-        }
-        if(petDTO.getRationBrand() == null){
-            ignoreFields.add("rationBrand");
-        }
-        if(petDTO.getFeedName() == null){
-            ignoreFields.add("feedName");
-        }
-        if(petDTO.getAmount() == null){
-            ignoreFields.add("amount");
-        }
-        if(petDTO.getFirstFeeding() == null){
-            ignoreFields.add("firstFeeding");
-        }
-        if(petDTO.getSecondFeeding() == null){
-            ignoreFields.add("secondFeeding");
-        }
-        if(petDTO.getFirstWalk() == null){
-            ignoreFields.add("firstWalk");
-        }
-        if(petDTO.getSecondWalk() == null){
-            ignoreFields.add("secondWalk");
         }
         return ignoreFields.toArray(String[]::new);
     }

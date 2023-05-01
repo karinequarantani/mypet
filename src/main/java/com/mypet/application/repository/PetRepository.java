@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PetRepository extends JpaRepository<Pet, String> {
 
-    Page<Pet> findAllByTutorId(String tutorId, Pageable pageable);
+    Page<Pet> findAllByTutorIdOrderByName(String tutorId, Pageable pageable);
 }
